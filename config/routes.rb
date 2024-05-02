@@ -7,4 +7,19 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  
+# This line sets up the standard RESTful routes for movies
+resources :movies
+
+# This line sets up the standard RESTful routes for lists,
+# and nested routes for creating bookmarks within a list
+resources :lists do
+  resources :bookmarks, only: [:new, :create]
+end
+
+# This line sets up the route for deleting a bookmark
+resources :bookmarks, only: [:destroy]
+
+
 end
